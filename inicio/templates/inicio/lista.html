@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{{% block navbar1 %}
+    <li class="nav-item"><a class="nav-link" aria-current="page" href={% url "inicior" %}>Home</a></li>
+    <li class="nav-item"><a class="nav-link" href={% url "nosotros" %}>Sobre Nosotros</a></li>
+    <li class="nav-item"><a class="nav-link" href={% url "contacto" %}>Contactanos</a></li>
+    {% if request.user.is_authenticated %}
+    <li class="nav-item"><a class="nav-link active" href={% url "perfil" %}>{{request.user.username}}</a></li>
+        <img src={{request.user.datosextras.avatar.url}} alt="" height="35px">
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <li class="nav-item"><button type="submit" class="nav-link btn btn-link" >Cerrar Sesión</button></li>
+    </form>
+    {% else %}
+    <a class="btn btn-primary btn-sm px-7 me-sm-3" href={% url "login" %} style="font-size: 19px;">Iniciar Sesión</a>
+    {% endif %}
+{% endblock navbar1 %}}
+
+{{% block header1 %}
+    <h1 class="display-5 fw-bolder text-white mb-2">Empleados registrados</h1>
+    <p class="lead text-white-50 mb-4">Bienvenido a la lista de empleados de la empresa</p>
+    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+    </div>
+    <a class="btn btn-outline-light btn-lg px-4" href={% url "inicior" %}>Volver atras</a>
+{% endblock header1 %}}
+
+{% block features1 %}
+<body>
+
+    <h3>Empleados registrados: </h3>
+    <form action={% url 'lista' %}>
+        {{formulario}}
+        <input type="submit" value="Buscar">
+    </form>
+{% if empleados %}
+    <p>
+        {% for empleado in empleados %}   
+            <li> {{empleado}} 
+            | <a href={% url 'ver_empleado' empleado.id %}>Ver</a> 
+            | <a href={% url 'eliminar_empleado' empleado.id %}>Eliminar</a> 
+            | <a href={% url 'editar_empleado' empleado.id %}>Editar</a>  
+            </li>
+        {% endfor %}  
+    </p>
+{%else%}
+No se encontraron empleados registrados
+{%endif%}
+</body>
+{% endblock features1 %}
+
+    
