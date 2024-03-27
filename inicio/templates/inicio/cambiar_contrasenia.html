@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{{% block header1 %}
+    <h1 class="display-5 fw-bolder text-white mb-2">Cambiar contraseña</h1>
+    <div class="lead text-white-50 mb-4"
+        <body>
+            <h3>Ingrese los datos solicitados:</h3>
+       
+            <form action="{% url 'cambiar_contrasenia' %}" method="POST">
+                {% csrf_token %}
+                <table>
+                  {{form}}
+                </table>
+                <br>
+                <input class="btn btn-primary btn-lg px-4 me-sm-3" type="submit" value="Cambiar contraseña">
+                <a class="btn btn-outline-light btn-lg px-4" href={% url "perfil" %}>Volver atras</a>
+            </form>
+        </body>
+    </div>
+    <br>
+
+
+{% endblock header1 %}}
+
+
+
+
+
+
+
+
+{% block features1 %}
+
+{% endblock features1 %}

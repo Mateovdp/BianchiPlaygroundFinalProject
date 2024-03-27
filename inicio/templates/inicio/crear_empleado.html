@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+
+{{% block header1 %}
+    <h1 class="display-5 fw-bolder text-white mb-2">Crear empleado</h1>
+    <p class="lead text-white-50 mb-4">Ingrese los datos solicitados:</p>
+
+
+   <div class="lead text-white-50 mb-4">
+    <form action="{% url 'crear_empleado' %}" method="POST">
+          {% csrf_token %}
+
+        <table>
+          {{formulario}}
+        </table>
+        <input class="btn btn-primary btn-lg px-4 me-sm-3" type="submit" value="Crear empleado">
+    </form>
+
+    </div>
+
+
+    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+        <a class="btn btn-outline-light btn-lg px-4" href={% url "lista" %}>Ver todos los empleados</a>
+    </div>
+{% endblock header1 %}}
+
+
+
+
+{% block features1 %}
+
+{% endblock features1 %}

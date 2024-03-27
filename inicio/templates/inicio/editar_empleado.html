@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+
+{{% block header1 %}
+    <h1 class="display-5 fw-bolder text-white mb-2">Editar empleado</h1>
+    <p class="lead text-white-50 mb-4">Modifica la informacion del empleado seleccionado.</p>
+    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+        <a class="btn btn-outline-light btn-lg px-4" href={% url "lista" %}>Volver atras</a>
+    </div>
+{% endblock header1 %}}
+
+{% block features1 %}
+<body>
+    <h1>Editar empleado</h1>
+   
+    <form action="{% url 'editar_empleado' empleado.id %}" method="POST">
+          {% csrf_token %}
+        <table>
+          {{formulario}}
+        </ table>
+        <input type="submit" value="Editar empleado">
+    </form>
+</body>
+
+{% endblock features1 %}

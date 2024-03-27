@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+
+{{% block header1 %}
+    <h1 class="display-5 fw-bolder text-white mb-2">Editar perfil</h1>
+    <div class="lead text-white-50 mb-4"
+        <body>
+            <h3>Ingrese los datos solicitados:</h3>
+       
+            <form action="{% url 'editar_perfil' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                  {{formulario}}
+                </table>
+                <br>
+                <input class="btn btn-primary btn-lg px-4 me-sm-3" type="submit" value="Editar perfil">
+            </form>
+        </body>
+    </div>
+    <br>
+
+
+{% endblock header1 %}}
+
+
+
+
+
+
+
+
+{% block features1 %}
+
+{% endblock features1 %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{{% block header1 %}
+    <h1 class="display-5 fw-bolder text-white mb-2">Empleados registrados</h1>
+    <p class="lead text-white-50 mb-4">Bienvenido a la lista de empleados de la empresa</p>
+    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+    </div>
+    <a class="btn btn-outline-light btn-lg px-4" href={% url "inicio" %}>Volver atras</a>
+{% endblock header1 %}}
+
+{% block features1 %}
+<body>
+
+    <h3>Empleados registrados: </h3>
+    <form action={% url 'lista' %}>
+        {{formulario}}
+        <input type="submit" value="Buscar">
+    </form>
+{% if empleados %}
+    <p>
+        {% for empleado in empleados %}   
+            <li> {{empleado}} 
+            | <a href={% url 'ver_empleado' empleado.id %}>Ver</a> 
+            | <a href={% url 'eliminar_empleado' empleado.id %}>Eliminar</a> 
+            | <a href={% url 'editar_empleado' empleado.id %}>Editar</a>  
+            </li>
+        {% endfor %}  
+    </p>
+{%else%}
+No se encontraron empleados registrados
+{%endif%}
+</body>
+{% endblock features1 %}
+
+    

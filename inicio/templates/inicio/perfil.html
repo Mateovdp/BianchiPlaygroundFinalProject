@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+
+{{% block header1 %}
+    <h1 class="display-5 fw-bolder text-white mb-2">Perfil de {{request.user}} </h1>
+    <p class="lead text-white-50 mb-4"></p>
+    <div class="lead text-white-50 mb-4">
+            <li><b>Nombre:</b> {{request.user.first_name}}</li>
+            <li><b>Apellido:</b> {{request.user.last_name}}</li>
+            <li><b>Email:</b> {{request.user.email}}</li>
+            {% if request.user.datosextras.avatar%}
+            <li><b>Avatar:</b><img src={{request.user.datosextras.avatar.url}} alt="" height="100px"></li>
+            {% endif %}
+    </div>
+    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+        <a class="btn btn-outline-light btn-lg px-4" href={% url "inicio" %}>Volver atras</a>
+        <a class="btn btn-outline-light btn-lg px-4" href={% url "editar_perfil" %}>Editar información</a>
+        <a class="btn btn-outline-light btn-lg px-4" href={% url "cambiar_contrasenia" %}>Cambiar mi contraseña</a>
+    </div>
+{% endblock header1 %}}
+
+{% block features1 %}
+{% endblock features1 %}
