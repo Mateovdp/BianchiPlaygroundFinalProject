@@ -9,8 +9,11 @@
             <li><b>Nombre:</b> {{request.user.first_name}}</li>
             <li><b>Apellido:</b> {{request.user.last_name}}</li>
             <li><b>Email:</b> {{request.user.email}}</li>
+            {% if request.user.datosextras.fecha_creacion %}
+                <li><b>Fecha de creación:</b> {{ request.user.datosextras.fecha_creacion }}</li>
+            {% endif %}
             {% if request.user.datosextras.avatar%}
-            <li><b>Avatar:</b><img src={{request.user.datosextras.avatar.url}} alt="" height="100px"></li>
+                <li><b>Avatar:</b><img src={{ request.user.datosextras.avatar.url }} alt="" height="100px"></li>
             {% endif %}
     </div>
     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">

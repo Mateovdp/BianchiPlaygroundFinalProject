@@ -1,13 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
+from inicio.models import Empleado, DatosExtras
 
-class FormularioBaseEmpleado(forms.Form):
-    nombre = forms.CharField(max_length=20)
-    apellido = forms.CharField(max_length=20)
-    documento = forms.IntegerField()
-    localidad = forms.CharField(max_length=20)
-    informacion = forms.CharField(max_length=500)
+class FormularioBaseEmpleado(forms.ModelForm):
+    class Meta:
+        model = Empleado
+        fields = ['nombre', 'apellido', 'fecha_ingreso', 'documento', 'localidad', 'informacion', 'avatar']
+
 
 
 class FormularioCreacionEmpleado(FormularioBaseEmpleado):
@@ -41,3 +41,9 @@ class EditarPerfil(UserChangeForm):
     class Meta:
         model = User
         fields = ['email', 'first_name', 'last_name']
+
+
+class FormularioDatosExtras(forms.ModelForm):
+    class Meta:
+        model = DatosExtras
+        fields = ['avatar', 'fecha_creacion']

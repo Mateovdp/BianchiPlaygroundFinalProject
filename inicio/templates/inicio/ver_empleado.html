@@ -8,9 +8,13 @@
     <div class="lead text-white-50 mb-4">
             <li><b>Nombre:</b> {{empleado.nombre}}</li>
             <li><b>Apellido:</b> {{empleado.apellido}}</li>
+            <li><b>Fecha de ingreso:</b> {{empleado.fecha_ingreso}}</li>
             <li><b>Documento:</b> {{empleado.documento}}</li>
             <li><b>Localidad:</b> {{empleado.localidad}}</li>
             <li><b>Informacion:</b> {{empleado.informacion}}</li>
+            {% if empleado.avatar %}
+            <li><b>Avatar:</b> <img src="{{ empleado.avatar.url }}" alt="Avatar"></li>
+            {% endif %}
     </div>
     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
         <a class="btn btn-outline-light btn-lg px-4" href={% url "lista" %}>Volver atras</a>

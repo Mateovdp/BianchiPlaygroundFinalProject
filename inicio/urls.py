@@ -1,5 +1,5 @@
 from django.urls import path
-from inicio.views import inicio, crear_empleado, lista, nosotros, contacto, ver_empleado, eliminar_empleado, editar_empleado, login, registro, perfil, editar_perfil, EditarContrasenia
+from inicio.views import inicio, CrearEmpleado, lista, nosotros, contacto, ver_empleado, eliminar_empleado, editar_empleado, login, registro, perfil, editar_perfil, EditarContrasenia
 from django.contrib.auth.views import LogoutView
 
 
@@ -10,7 +10,7 @@ urlpatterns = [
     path('contactanos/', contacto, name= 'contacto'),
     #control de empleados
     path('registrados/', lista, name= 'lista'),
-    path('crear_empleado/', crear_empleado, name= 'crear_empleado'),
+    path('crear_empleado/', CrearEmpleado.as_view(), name= 'crear_empleado'),
     path('empleado/<int:id_empleado>/', ver_empleado, name= 'ver_empleado'),
     path('empleado/<int:id_empleado>/eliminar/', eliminar_empleado, name= 'eliminar_empleado'),
     path('empleado/<int:id_empleado>/editar/', editar_empleado, name= 'editar_empleado'),
